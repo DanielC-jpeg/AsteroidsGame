@@ -1,71 +1,48 @@
-Star [] letsgo;
-Spaceship bob;
-public void setup() 
-{
-  size(500,500);
-  bob = new Spaceship();
-  letsgo = new Star [500];
-  
-  
-    for(int i =0; i < letsgo.length; i++) {
-    letsgo[i] = new Star();
-  }
-
-
-}
-public void draw() 
-{
-  background(0);
-   noStroke();
-    for(int i =0; i < letsgo.length; i++) {
+class Spaceship extends Floater  
+{   
+    public Spaceship() {
+     corners = 7;
+      myCenterY = 250;
+      myCenterX = 250;
+     xCorners = new int[corners];
+     yCorners = new int[corners];
+     xCorners[0] = 12;
+     yCorners[0] = 0;
+     xCorners[1] = -4;
+     yCorners[1] = 6;
+     xCorners[2] = -2;
+     yCorners[2] = 4;
+     xCorners[3] = -2;
+     yCorners[3] = 2;
+     xCorners[4] = -5;
+     yCorners[4] = 0;
+     xCorners[5] = -2;
+     yCorners[5] = -2;
+     xCorners[6] = -2;
+     yCorners[6] = -4;
+     xCorners[7] = -4;
+     yCorners[7] = -6;
+     myColor = color(255);
      
-    letsgo[i].show();
-  }
-  
-   bob.show();
-    bob.move();
-
+    }
+    
+   public void setX(int speed) {
+     myCenterX = speed;
+   }
+   
+   public void setY(int speed) {
+     myCenterY = speed;
+   }
+   
+      public void setXSpeed(int speed) {
+     myYspeed = speed;
+   }
+   
+   public void setYSpeed(int speed) {
+     myXspeed = speed;
+   }
+   
+   public void setDirect(double speed) {
+     myPointDirection = speed;
+   }
 }
-
-
-public void keyPressed() {
- if (key == 'w') {
-  bob.accelerate(.1); 
-
- }
- 
- if(key == 's') {
-  bob.accelerate(-.1); 
- }
- 
-  if(key == 'd') {
-  bob.turn(10); 
- }
- 
- if(key == 'a') {
-  bob.turn(-10); 
- }
-
-}
-
-
-public void keyReleased() {
-   if (key == 'w') {
-   bob.setYSpeed(0);
-   bob.setXSpeed(0);
- }
- 
- if(key == 's') {
-   bob.setYSpeed(0);
-   bob.setXSpeed(0);
- }
- 
- if (key == 'h') {
-   int x = (int)(Math.random()*500);
-   int i = (int)(Math.random()*500);
-   int higuys = (int)(Math.random()*360);
-   bob.setX(x);
-   bob.setY(i);
-   bob.setYSpeed(0);
-   bob.setXSpeed(0);
-   bob.setDirect((double)higuys);
