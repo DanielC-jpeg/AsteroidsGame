@@ -3,9 +3,9 @@ Star [] waterbucket;
 Spaceship letsgetit;
 ArrayList<Astroids> celi;
 public void keyReleased() {
-   int ding = (int)(Math.random()*500);
-   int speed = (int)(Math.random()*500);
-   int mongoose = (int)(Math.random()*360);
+   int ding = (int)(Math.random()*450);
+   int speed = (int)(Math.random()*450);
+   int mongoose = (int)(Math.random()*350);
  if (key == 'w'){
 letsgetit.accelerate(-.05);
  }
@@ -39,7 +39,7 @@ public void keyPressed() {
 
 public void setup() 
 {
-  size(500,500);
+  size(800,800);
   celi = new ArrayList<Astroids>();
   letsgetit = new Spaceship();
   waterbucket = new Star [500];
