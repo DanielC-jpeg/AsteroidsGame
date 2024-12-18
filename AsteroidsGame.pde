@@ -1,47 +1,47 @@
 //boooooom
 Star [] waterbucket;
-Spaceship letsgetit;
-ArrayList<Astroids> celi;
+Spaceship higuys;
+ArrayList<Astroids> minion;
 public void keyReleased() {
-   int ding = (int)(Math.random()*450);
-   int speed = (int)(Math.random()*450);
-   int mongoose = (int)(Math.random()*350);
+   int ding = (int)(Math.random()*500);
+   int speed = (int)(Math.random()*500);
+   int strawberry = (int)(Math.random()*360);
  if (key == 'w'){
-letsgetit.accelerate(-.05);
+higuys.accelerate(-.05);
  }
  if (key == 'h') {
-   letsgetit.setX(ding);
-   letsgetit.setY(speed);
-   letsgetit.setYSpeed(0);
-   letsgetit.setXSpeed(0);
-   letsgetit.setDirect((double)mongoose);
+   higuys.setX(ding);
+   higuys.setY(speed);
+   higuys.setYSpeed(0);
+   higuys.setXSpeed(0);
+   higuys.setDirect((double)strawberry);
  }
 }
 public void keyPressed() {
  if (key == 'w') {
-  letsgetit.accelerate(.1); 
+  higuys.accelerate(.1); 
 
  }
  
  if(key == 's') {
-  letsgetit.accelerate(-.1); 
+  higuys.accelerate(-.1); 
  }
  
   if(key == 'd') {
-  letsgetit.turn(20); 
+  higuys.turn(20); 
  }
  
  if(key == 'a') {
-  letsgetit.turn(-20); 
+  higuys.turn(-20); 
  }
 
 }
 
 public void setup() 
 {
-  size(800,800);
-  celi = new ArrayList<Astroids>();
-  letsgetit = new Spaceship();
+  size(500,500);
+  minion = new ArrayList<Astroids>();
+  higuys = new Spaceship();
   waterbucket = new Star [500];
   
   
@@ -50,7 +50,7 @@ public void setup()
   }for (int i = 450; i < waterbucket.length;i++){
     waterbucket[i] = new bigStar();
   }for(int i = 0; i < 20; i++){
-    celi.add(new Astroids());
+    minion.add(new Astroids());
   }
 }
 
@@ -59,18 +59,18 @@ public void draw()
   background(0);
    noStroke();
     // Check for collision
-//float distance = dist(letsgetit.myCenterX,letsgetit.myCenterY,celi.myCenterX, celi.myCenterY);
+//float distance = dist(higuys.myCenterX,higuys.myCenterY,minion.myCenterX, minion.myCenterY);
     for(int i =0; i < waterbucket.length; i++) {
    waterbucket[i].show();
-  }for(int i = 0; i < celi.size(); i ++){
-    celi.get(i).move();
-    celi.get(i).show();
-    celi.get(i).accelerate(Math.random() / 25);
-    if(dist(letsgetit.getX(),letsgetit.getY(), celi.get(i).getX(), celi.get(i).getY())<20){
-      celi.remove(i);
+  }for(int i = 0; i < minion.size(); i ++){
+    minion.get(i).move();
+    minion.get(i).show();
+    minion.get(i).accelerate(Math.random() / 25);
+    if(dist(higuys.getX(),higuys.getY(), minion.get(i).getX(), minion.get(i).getY())<20){
+      minion.remove(i);
       i--;
     }
   }
-  letsgetit.show();
-  letsgetit.move();
+  higuys.show();
+  higuys.move();
 }
