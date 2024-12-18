@@ -71,3 +71,4 @@ class Astroids extends Floater {
      public int getY(){return (int)myCenterY;}  
   public int getX(){return (int)myCenterX;}
 }
+//
