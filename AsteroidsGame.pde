@@ -1,74 +1,76 @@
-//your variable declarations here
-Star [] epic;
-Spaceship lavabucket;
-public void setup() 
-{
-  size(500,500);
-  lavabucket = new Spaceship();
-  epic = new Star [500];
-  
-  
-    for(int i =0; i < epic.length; i++) {
-    epic[i] = new Star();
-  }
-
-  //your code here
-}
+//boooooom
+Star [] waterbucket;
+Spaceship letsgetit;
+ArrayList<Astroids> celi;
 public void keyReleased() {
-   if (key == 'w') {
-   lavabucket.setYSpeed(0);
-   lavabucket.setXSpeed(0);
+   int ding = (int)(Math.random()*500);
+   int speed = (int)(Math.random()*500);
+   int mongoose = (int)(Math.random()*360);
+ if (key == 'w'){
+letsgetit.accelerate(-.05);
+ }
+ if (key == 'h') {
+   letsgetit.setX(ding);
+   letsgetit.setY(speed);
+   letsgetit.setYSpeed(0);
+   letsgetit.setXSpeed(0);
+   letsgetit.setDirect((double)mongoose);
+ }
+}
+public void keyPressed() {
+ if (key == 'w') {
+  letsgetit.accelerate(.1); 
+
  }
  
  if(key == 's') {
-   lavabucket.setYSpeed(0);
-   lavabucket.setXSpeed(0);
+  letsgetit.accelerate(-.1); 
  }
  
- if (key == 'h') {
-   int ding = (int)(Math.random()*500);
-   int speed = (int)(Math.random()*500);
-   int wilbur = (int)(Math.random()*360);
-   lavabucket.setX(ding);
-   lavabucket.setY(speed);
-   lavabucket.setYSpeed(0);
-   lavabucket.setXSpeed(0);
-   lavabucket.setDirect((double)wilbur);
+  if(key == 'd') {
+  letsgetit.turn(20); 
  }
+ 
+ if(key == 'a') {
+  letsgetit.turn(-20); 
+ }
+
+}
+
+public void setup() 
+{
+  size(500,500);
+  celi = new ArrayList<Astroids>();
+  letsgetit = new Spaceship();
+  waterbucket = new Star [500];
+  
+  
+    for(int i =0; i < waterbucket.length - 50 ; i++) {
+    waterbucket[i] = new Star();
+  }for (int i = 450; i < waterbucket.length;i++){
+    waterbucket[i] = new bigStar();
+  }for(int i = 0; i < 20; i++){
+    celi.add(new Astroids());
+  }
 }
 
 public void draw() 
 {
   background(0);
    noStroke();
-    for(int i =0; i < epic.length; i++) {
-    epic[i].show();
+    // Check for collision
+//float distance = dist(letsgetit.myCenterX,letsgetit.myCenterY,celi.myCenterX, celi.myCenterY);
+    for(int i =0; i < waterbucket.length; i++) {
+   waterbucket[i].show();
+  }for(int i = 0; i < celi.size(); i ++){
+    celi.get(i).move();
+    celi.get(i).show();
+    celi.get(i).accelerate(Math.random() / 25);
+    if(dist(letsgetit.getX(),letsgetit.getY(), celi.get(i).getX(), celi.get(i).getY())<20){
+      celi.remove(i);
+      i--;
+    }
   }
-  
-   lavabucket.show();
-  lavabucket.move();
-  //your code here
+  letsgetit.show();
+  letsgetit.move();
 }
-
-
-public void keyPressed() {
- if (key == 'w') {
-  lavabucket.accelerate(.1); 
-
- }
- 
- if(key == 's') {
-  lavabucket.accelerate(-.1); 
- }
- 
-  if(key == 'd') {
-  lavabucket.turn(10); 
- }
- 
- if(key == 'a') {
-  lavabucket.turn(-10); 
- }
-
-}
-
-
